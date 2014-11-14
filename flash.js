@@ -84,6 +84,13 @@ function flash(page) {
 				'mimeTypes': mimeTypes
 			});
 
+			// Add a fake "GetVersion" prototype.
+			HTMLObjectElement.prototype.GetVariable = HTMLEmbedElement.prototype.GetVariable = function(name) {
+				if (name === '$version') {
+					return 'LNX 14,0,0,125';
+				}
+			};
+
 		} catch (err) {
 			return false;
 		}
